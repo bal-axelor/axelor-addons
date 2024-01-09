@@ -23,15 +23,20 @@ ext {
 	docusignVersion = "3.8.0"
 	docusignJarDir = ".jar"
     docusignJarName = 'shadow-docusign.jar'    
+    openSuiteVersion = '6.1.38'
 }
 
 dependencies {
-	api project(":modules:axelor-base")
-	api project(":modules:axelor-sale")     
+	//api project(":modules:axelor-base")
+	//api project(":modules:axelor-sale")     
+ 	api "com.axelor.apps:axelor-base:${openSuiteVersion}"
+    api "com.axelor.apps:axelor-sale:${openSuiteVersion}" 
  
 	docusignDeps "com.docusign:docusign-esign-java:${docusignVersion}"	                      
 	implementation files("${docusignJarDir}/${docusignJarName}")	
 }
+
+
 
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 task shadowDocusignDeps(type: ShadowJar) {    
